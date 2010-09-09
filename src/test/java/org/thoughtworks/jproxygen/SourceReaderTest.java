@@ -3,7 +3,6 @@ package org.thoughtworks.jproxygen;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertEquals;
