@@ -1,0 +1,1 @@
+Use ASM to generate a Proxy class that is a subclass of the source class so that a callback is invoked for overridden methods.
