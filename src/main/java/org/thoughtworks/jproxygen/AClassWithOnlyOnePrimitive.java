@@ -1,5 +1,7 @@
 package org.thoughtworks.jproxygen;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * Created by IntelliJ IDEA.
  * User: ThoughtWorks
