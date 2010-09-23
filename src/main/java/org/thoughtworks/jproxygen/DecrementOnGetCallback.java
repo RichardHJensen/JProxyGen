@@ -17,6 +17,6 @@ public class DecrementOnGetCallback implements JProxyCallback {
             }
 
         }
-        return JProxyCallback.DEFAULT_BEHAVIOR;
+        return JProxyCallback.Behavior.DEFAULT;
     }
 }

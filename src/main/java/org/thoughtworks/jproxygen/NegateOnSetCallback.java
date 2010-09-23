@@ -1,5 +1,7 @@
 package org.thoughtworks.jproxygen;
 
+import static org.thoughtworks.jproxygen.JProxyCallback.Behavior;
+
 /**
  * Created by IntelliJ IDEA.
  * User: ThoughtWorks
@@ -19,6 +21,6 @@ public class NegateOnSetCallback implements JProxyCallback {
             }
 
         }
-        return JProxyCallback.DEFAULT_BEHAVIOR;
+        return Behavior.DEFAULT;
     }
 }

@@ -9,6 +9,6 @@ package org.thoughtworks.jproxygen;
  */
 public class NoBehaviorProxyCallback implements JProxyCallback {
     public Object invoke(Object proxiedObject, Timing timing, String methodName, Object... methodArgs) {
-        return JProxyCallback.BYPASS_BEHAVIOR;
+        return JProxyCallback.Behavior.BYPASS;
     }
 }

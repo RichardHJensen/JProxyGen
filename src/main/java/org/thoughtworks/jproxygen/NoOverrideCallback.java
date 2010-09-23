@@ -9,6 +9,6 @@ package org.thoughtworks.jproxygen;
  */
 public class NoOverrideCallback implements JProxyCallback {
     public Object invoke(Object proxiedObject, Timing timing, String methodName, Object... methodArgs) {
-        return JProxyCallback.DEFAULT_BEHAVIOR;
+        return JProxyCallback.Behavior.DEFAULT;
     }
 }

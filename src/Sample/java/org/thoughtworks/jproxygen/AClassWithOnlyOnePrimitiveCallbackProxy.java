@@ -1,10 +1,7 @@
 package org.thoughtworks.jproxygen;
 
-import static org.thoughtworks.jproxygen.JProxyCallback.BYPASS_BEHAVIOR;
-import static org.thoughtworks.jproxygen.JProxyCallback.DEFAULT_BEHAVIOR;
-import static org.thoughtworks.jproxygen.JProxyCallback.Timing.POST;
-import static org.thoughtworks.jproxygen.JProxyCallback.Timing.PRE;
-
+import static org.thoughtworks.jproxygen.JProxyCallback.Behavior;
+import static org.thoughtworks.jproxygen.JProxyCallback.Timing;
 
 public class AClassWithOnlyOnePrimitiveCallbackProxy extends AClassWithOnlyOnePrimitive {
     private JProxyCallback callback;
@@ -17,12 +14,12 @@ public class AClassWithOnlyOnePrimitiveCallbackProxy extends AClassWithOnlyOnePr
     @Override
     public int getIntValue() {
         int value = 0;
-        Object result = callback.invoke(this, PRE, "getIntValue");
-        if (DEFAULT_BEHAVIOR == result) {
+        Object result = callback.invoke(this, Timing.PRE, "getIntValue");
+        if (Behavior.DEFAULT == result) {
            value = super.getIntValue();
         }
-        result = callback.invoke(this, POST, "getIntValue", value);
-        if (DEFAULT_BEHAVIOR != result && (BYPASS_BEHAVIOR != result)) {
+        result = callback.invoke(this, Timing.POST, "getIntValue", value);
+        if (Behavior.DEFAULT != result && (Behavior.BYPASS != result)) {
             value = (Integer) result;
         }
         return (Integer) value;
@@ -30,16 +27,13 @@ public class AClassWithOnlyOnePrimitiveCallbackProxy extends AClassWithOnlyOnePr
 
     @Override
     public void setIntValue(int intValue) {
-        Object result = callback.invoke(this, PRE, "setIntValue",  intValue);
-        if (DEFAULT_BEHAVIOR == result) {
+        Object result = callback.invoke(this, Timing.PRE, "setIntValue",  intValue);
+        if (Behavior.DEFAULT == result) {
             super.setIntValue(intValue);
         }
-        else if (BYPASS_BEHAVIOR == result) {
-            return;
-        }
-        else {
+        else if (Behavior.BYPASS != result) {
             super.setIntValue((Integer) result);
         }
-        callback.invoke(this, POST, "setIntValue", intValue);
+        callback.invoke(this, Timing.POST, "setIntValue", intValue);
     }
 }

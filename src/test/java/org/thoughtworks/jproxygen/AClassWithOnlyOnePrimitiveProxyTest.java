@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.io.OutputStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.thoughtworks.jproxygen.JProxyCallback.Behavior;
 
 /**
  * Created by IntelliJ IDEA.
@@ -74,7 +76,28 @@ public class AClassWithOnlyOnePrimitiveProxyTest {
             if (methodArgs.length > 0) {
                 resultBuilder.append(methodArgs[0]);
             }
-            return JProxyCallback.DEFAULT_BEHAVIOR;
+            return Behavior.DEFAULT;
+        }
+    }
+
+    @Test
+    public void enumsShouldEqualWithDoubleEqual() {
+        assertTrue(Behavior.BYPASS == Behavior.BYPASS);
+    }
+
+    @Test
+    public void shouldCallPostEvenWhenBypassingBehaviorInCallback() {
+        MethodInvocationTraceCallback callback = new MethodInvocationTraceCallback();
+        AClassWithOnlyOnePrimitiveCallbackProxy proxy = new AClassWithOnlyOnePrimitiveCallbackProxy(callback);
+        proxy.setIntValue(13);
+        assertTrue(callback.resultBuilder.indexOf("POST-setIntValue") >= 0);
+    }
+
+    private class MethodInvocationTraceCallback implements JProxyCallback {
+        public StringBuilder resultBuilder = new StringBuilder();
+        public Object invoke(Object proxiedObject, Timing timing, String methodName, Object... methodArgs) {
+            resultBuilder.append(timing + "-" + methodName + "\n");
+            return Behavior.BYPASS;
         }
     }
 }
