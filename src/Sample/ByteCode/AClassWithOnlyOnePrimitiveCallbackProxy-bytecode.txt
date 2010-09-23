@@ -1,0 +1,127 @@
+RJ4711-MacBook-Pro:JProxyGen ThoughtWorks$ java -cp $ASM_PATH org.objectweb.asm.util.TraceClassVisitor ./target/classes/org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitiveCallbackProxy.class
+// class version 49.0 (49)
+// access flags 33
+public class org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitiveCallbackProxy extends org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitive  {
+
+  // access flags 16409
+  public final static enum INNERCLASS org/thoughtworks/jproxygen/JProxyCallback$Timing org/thoughtworks/jproxygen/JProxyCallback Timing
+  // access flags 16409
+  public final static enum INNERCLASS org/thoughtworks/jproxygen/JProxyCallback$Behavior org/thoughtworks/jproxygen/JProxyCallback Behavior
+
+  // access flags 2
+  private Lorg/thoughtworks/jproxygen/JProxyCallback; callback
+
+  // access flags 1
+  public <init>(Lorg/thoughtworks/jproxygen/JProxyCallback;)V
+    ALOAD 0
+    INVOKESPECIAL org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitive.<init> ()V
+    ALOAD 0
+    ALOAD 1
+    PUTFIELD org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitiveCallbackProxy.callback : Lorg/thoughtworks/jproxygen/JProxyCallback;
+    RETURN
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // access flags 1
+  public getIntValue()I
+    ICONST_0
+    ISTORE 1
+    ALOAD 0
+    GETFIELD org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitiveCallbackProxy.callback : Lorg/thoughtworks/jproxygen/JProxyCallback;
+    ALOAD 0
+    GETSTATIC org/thoughtworks/jproxygen/JProxyCallback$Timing.PRE : Lorg/thoughtworks/jproxygen/JProxyCallback$Timing;
+    LDC "getIntValue"
+    ICONST_0
+    ANEWARRAY java/lang/Object
+    INVOKEINTERFACE org/thoughtworks/jproxygen/JProxyCallback.invoke (Ljava/lang/Object;Lorg/thoughtworks/jproxygen/JProxyCallback$Timing;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;
+    ASTORE 2
+    GETSTATIC org/thoughtworks/jproxygen/JProxyCallback$Behavior.DEFAULT : Lorg/thoughtworks/jproxygen/JProxyCallback$Behavior;
+    ALOAD 2
+    IF_ACMPNE L0
+    ALOAD 0
+    INVOKESPECIAL org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitive.getIntValue ()I
+    ISTORE 1
+   L0
+    ALOAD 0
+    GETFIELD org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitiveCallbackProxy.callback : Lorg/thoughtworks/jproxygen/JProxyCallback;
+    ALOAD 0
+    GETSTATIC org/thoughtworks/jproxygen/JProxyCallback$Timing.POST : Lorg/thoughtworks/jproxygen/JProxyCallback$Timing;
+    LDC "getIntValue"
+    ICONST_1
+    ANEWARRAY java/lang/Object
+    DUP
+    ICONST_0
+    ILOAD 1
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    AASTORE
+    INVOKEINTERFACE org/thoughtworks/jproxygen/JProxyCallback.invoke (Ljava/lang/Object;Lorg/thoughtworks/jproxygen/JProxyCallback$Timing;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;
+    ASTORE 2
+    GETSTATIC org/thoughtworks/jproxygen/JProxyCallback$Behavior.DEFAULT : Lorg/thoughtworks/jproxygen/JProxyCallback$Behavior;
+    ALOAD 2
+    IF_ACMPEQ L1
+    GETSTATIC org/thoughtworks/jproxygen/JProxyCallback$Behavior.BYPASS : Lorg/thoughtworks/jproxygen/JProxyCallback$Behavior;
+    ALOAD 2
+    IF_ACMPEQ L1
+    ALOAD 2
+    CHECKCAST java/lang/Integer
+    INVOKEVIRTUAL java/lang/Integer.intValue ()I
+    ISTORE 1
+   L1
+    ILOAD 1
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    INVOKEVIRTUAL java/lang/Integer.intValue ()I
+    IRETURN
+    MAXSTACK = 8
+    MAXLOCALS = 3
+
+  // access flags 1
+  public setIntValue(I)V
+    ALOAD 0
+    GETFIELD org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitiveCallbackProxy.callback : Lorg/thoughtworks/jproxygen/JProxyCallback;
+    ALOAD 0
+    GETSTATIC org/thoughtworks/jproxygen/JProxyCallback$Timing.PRE : Lorg/thoughtworks/jproxygen/JProxyCallback$Timing;
+    LDC "setIntValue"
+    ICONST_1
+    ANEWARRAY java/lang/Object
+    DUP
+    ICONST_0
+    ILOAD 1
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    AASTORE
+    INVOKEINTERFACE org/thoughtworks/jproxygen/JProxyCallback.invoke (Ljava/lang/Object;Lorg/thoughtworks/jproxygen/JProxyCallback$Timing;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;
+    ASTORE 2
+    GETSTATIC org/thoughtworks/jproxygen/JProxyCallback$Behavior.DEFAULT : Lorg/thoughtworks/jproxygen/JProxyCallback$Behavior;
+    ALOAD 2
+    IF_ACMPNE L0
+    ALOAD 0
+    ILOAD 1
+    INVOKESPECIAL org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitive.setIntValue (I)V
+    GOTO L1
+   L0
+    GETSTATIC org/thoughtworks/jproxygen/JProxyCallback$Behavior.BYPASS : Lorg/thoughtworks/jproxygen/JProxyCallback$Behavior;
+    ALOAD 2
+    IF_ACMPEQ L1
+    ALOAD 0
+    ALOAD 2
+    CHECKCAST java/lang/Integer
+    INVOKEVIRTUAL java/lang/Integer.intValue ()I
+    INVOKESPECIAL org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitive.setIntValue (I)V
+   L1
+    ALOAD 0
+    GETFIELD org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitiveCallbackProxy.callback : Lorg/thoughtworks/jproxygen/JProxyCallback;
+    ALOAD 0
+    GETSTATIC org/thoughtworks/jproxygen/JProxyCallback$Timing.POST : Lorg/thoughtworks/jproxygen/JProxyCallback$Timing;
+    LDC "setIntValue"
+    ICONST_1
+    ANEWARRAY java/lang/Object
+    DUP
+    ICONST_0
+    ILOAD 1
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    AASTORE
+    INVOKEINTERFACE org/thoughtworks/jproxygen/JProxyCallback.invoke (Ljava/lang/Object;Lorg/thoughtworks/jproxygen/JProxyCallback$Timing;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;
+    POP
+    RETURN
+    MAXSTACK = 8
+    MAXLOCALS = 3
+}

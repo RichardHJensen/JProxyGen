@@ -1,0 +1,34 @@
+RJ4711-MacBook-Pro:src ThoughtWorks$ java -cp $ASM_PATH org.objectweb.asm.util.TraceClassVisitor ../target/classes/AClassWithOnlyOnePrimitive.class
+// class version 50.0 (50)
+// access flags 33
+public class org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitive {
+
+
+  // access flags 2
+  private I intValue
+
+  // access flags 1
+  public <init>()V
+    ALOAD 0
+    INVOKESPECIAL java/lang/Object.<init> ()V
+    RETURN
+    MAXSTACK = 1
+    MAXLOCALS = 1
+
+  // access flags 1
+  public getIntValue()I
+    ALOAD 0
+    GETFIELD org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitive.intValue : I
+    IRETURN
+    MAXSTACK = 1
+    MAXLOCALS = 1
+
+  // access flags 1
+  public setIntValue(I)V
+    ALOAD 0
+    ILOAD 1
+    PUTFIELD org/thoughtworks/jproxygen/AClassWithOnlyOnePrimitive.intValue : I
+    RETURN
+    MAXSTACK = 2
+    MAXLOCALS = 2
+}
