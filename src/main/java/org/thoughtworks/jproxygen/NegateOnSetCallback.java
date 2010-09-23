@@ -19,6 +19,6 @@ public class NegateOnSetCallback implements JProxyCallback {
             }
 
         }
-        return null;
+        return JProxyCallback.DEFAULT_BEHAVIOR;
     }
 }

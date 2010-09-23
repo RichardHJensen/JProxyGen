@@ -1,5 +1,7 @@
 package org.thoughtworks.jproxygen;
 
+import static org.thoughtworks.jproxygen.JProxyCallback.BYPASS_BEHAVIOR;
+import static org.thoughtworks.jproxygen.JProxyCallback.DEFAULT_BEHAVIOR;
 import static org.thoughtworks.jproxygen.JProxyCallback.Timing.POST;
 import static org.thoughtworks.jproxygen.JProxyCallback.Timing.PRE;
 
@@ -16,11 +18,11 @@ public class AClassWithOnlyOnePrimitiveCallbackProxy extends AClassWithOnlyOnePr
     public int getIntValue() {
         int value = 0;
         Object result = callback.invoke(this, PRE, "getIntValue");
-        if (null == result) {
+        if (DEFAULT_BEHAVIOR == result) {
            value = super.getIntValue();
         }
         result = callback.invoke(this, POST, "getIntValue", value);
-        if (null != result) {
+        if (DEFAULT_BEHAVIOR != result && (BYPASS_BEHAVIOR != result)) {
             value = (Integer) result;
         }
         return (Integer) value;
@@ -29,9 +31,12 @@ public class AClassWithOnlyOnePrimitiveCallbackProxy extends AClassWithOnlyOnePr
     @Override
     public void setIntValue(int intValue) {
         Object result = callback.invoke(this, PRE, "setIntValue",  intValue);
-        if (null == result) {
+        if (DEFAULT_BEHAVIOR == result) {
             super.setIntValue(intValue);
-         }
+        }
+        else if (BYPASS_BEHAVIOR == result) {
+            return;
+        }
         else {
             super.setIntValue((Integer) result);
         }
