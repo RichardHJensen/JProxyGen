@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+      <groupId>org.thoughtworks.jproxygen</groupId>
+      <artifactId>jproxygen-parent</artifactId>
+      <version>1.0-SNAPSHOT</version>        
+  </parent>
+  <artifactId>jproxygen-asm</artifactId>
+  <packaging>jar</packaging>
+  <name>ASM generator for jproxygen</name>
+  <url>http://github.com/facetnated/JProxyGen</url>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>asm</groupId>
+            <artifactId>asm-commons</artifactId>
+            <version>3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>asm</groupId>
+            <artifactId>asm-util</artifactId>
+            <version>3.2</version>
+        </dependency>
+         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>r06</version>
+        </dependency>
+    </dependencies>
+</project>
