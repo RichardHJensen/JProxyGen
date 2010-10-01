@@ -1,6 +1,4 @@
-package org.thoughtworks.jproxygen;
-
-import static org.thoughtworks.jproxygen.JProxyCallback.Behavior;
+package org.thoughtworks.jproxygen.asm;
 
 /**
  * Created by IntelliJ IDEA.

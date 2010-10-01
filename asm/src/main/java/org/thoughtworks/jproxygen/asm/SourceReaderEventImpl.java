@@ -1,4 +1,4 @@
-package org.thoughtworks.jproxygen;
+package org.thoughtworks.jproxygen.asm;
 
 import org.objectweb.asm.ClassReader;
 

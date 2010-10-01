@@ -1,14 +1,12 @@
-package org.thoughtworks.jproxygen;
+package org.thoughtworks.jproxygen.asm;
 
 import com.google.common.base.Function;
-import com.sun.org.apache.bcel.internal.generic.EmptyVisitor;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.MethodNode;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Method;
 import java.util.List;
 
 import static com.google.common.collect.Lists.transform;

@@ -1,7 +1,10 @@
-package org.thoughtworks.jproxygen;
+package org.thoughtworks.jproxygen.asm;
 
-import static org.thoughtworks.jproxygen.JProxyCallback.Behavior;
-import static org.thoughtworks.jproxygen.JProxyCallback.Timing;
+import org.thoughtworks.jproxygen.asm.AClassWithOnlyOnePrimitive;
+import org.thoughtworks.jproxygen.asm.JProxyCallback;
+
+import static org.thoughtworks.jproxygen.asm.JProxyCallback.Behavior;
+import static org.thoughtworks.jproxygen.asm.JProxyCallback.Timing;
 
 public class AClassWithOnlyOnePrimitiveCallbackProxy extends AClassWithOnlyOnePrimitive {
     private JProxyCallback callback;
