@@ -9,6 +9,7 @@
   <url>http://github.com/facetnated/JProxyGen</url>
   <modules>
 	<module>asm</module>
+	<module>behaviors</module>
   </modules>
     <build>
         <plugins>
