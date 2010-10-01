@@ -1,13 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.thoughtworks.jproxygen</groupId>
+  <groupId>com.thoughtworks.jproxygen</groupId>
   <artifactId>jproxygen-parent</artifactId>
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>Parent module for jproxygen</name>
   <url>http://github.com/facetnated/JProxyGen</url>
   <modules>
+	<module>sample</module>
 	<module>asm</module>
 	<module>behaviors</module>
   </modules>

@@ -1,10 +1,10 @@
-package org.thoughtworks.jproxygen.asm;
+package com.thoughtworks.jproxygen.asm;
 
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.thoughtworks.jproxygen.asm.JProxyCallback.Behavior;
+import static com.thoughtworks.jproxygen.asm.JProxyCallback.Behavior;
 
 /**
  * Created by IntelliJ IDEA.

@@ -1,4 +1,4 @@
-package org.thoughtworks.jproxygen.asm;
+package com.thoughtworks.jproxygen.asm;
 
 import org.objectweb.asm.ClassAdapter;
 import org.objectweb.asm.MethodVisitor;

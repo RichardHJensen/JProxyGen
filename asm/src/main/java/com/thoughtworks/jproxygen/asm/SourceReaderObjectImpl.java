@@ -1,4 +1,4 @@
-package org.thoughtworks.jproxygen.asm;
+package com.thoughtworks.jproxygen.asm;
 
 import com.google.common.base.Function;
 import org.objectweb.asm.ClassReader;
@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.util.List;
 
 import static com.google.common.collect.Lists.transform;
-import static com.google.common.collect.Lists.newArrayList;
 
 /**
  * Created by IntelliJ IDEA.

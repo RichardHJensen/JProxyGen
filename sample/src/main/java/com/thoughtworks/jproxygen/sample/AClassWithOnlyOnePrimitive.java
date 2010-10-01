@@ -1,6 +1,4 @@
-package org.thoughtworks.jproxygen.asm;
-
-import java.lang.reflect.InvocationTargetException;
+package com.thoughtworks.jproxygen.sample;
 
 /**
  * Created by IntelliJ IDEA.
