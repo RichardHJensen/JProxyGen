@@ -1,5 +1,7 @@
 package com.thoughtworks.jproxygen.asm;
 
+import com.thoughtworks.jproxygen.api.JProxyCallback;
+
 /**
  * Created by IntelliJ IDEA.
  * User: ThoughtWorks

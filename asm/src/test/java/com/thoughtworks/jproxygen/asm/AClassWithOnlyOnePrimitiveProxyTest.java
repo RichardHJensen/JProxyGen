@@ -1,10 +1,12 @@
 package com.thoughtworks.jproxygen.asm;
 
+import com.thoughtworks.jproxygen.api.JProxyCallback;
+import com.thoughtworks.jproxygen.sample.AClassWithOnlyOnePrimitiveCallbackProxy;
 import org.junit.Test;
 
+import static com.thoughtworks.jproxygen.api.JProxyCallback.Behavior;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static com.thoughtworks.jproxygen.asm.JProxyCallback.Behavior;
 
 /**
  * Created by IntelliJ IDEA.

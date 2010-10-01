@@ -1,4 +1,4 @@
-package com.thoughtworks.jproxygen.asm;
+package com.thoughtworks.jproxygen.api;
 
 /**
  * Created by IntelliJ IDEA.

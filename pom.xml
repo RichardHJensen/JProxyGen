@@ -8,6 +8,7 @@
   <name>Parent module for jproxygen</name>
   <url>http://github.com/facetnated/JProxyGen</url>
   <modules>
+	<module>api</module>
 	<module>sample</module>
 	<module>asm</module>
 	<module>behaviors</module>

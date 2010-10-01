@@ -1,5 +1,6 @@
 package com.thoughtworks.jproxygen.asm;
 
+import com.thoughtworks.jproxygen.api.JProxyCallback;
 import com.thoughtworks.jproxygen.sample.AClassWithOnlyOnePrimitive;
 
 /**

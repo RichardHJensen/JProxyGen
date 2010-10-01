@@ -6,16 +6,9 @@
       <artifactId>jproxygen-parent</artifactId>
       <version>1.0-SNAPSHOT</version>        
   </parent>
-  <artifactId>jproxygen-sample</artifactId>
+  <artifactId>jproxygen-api</artifactId>
   <packaging>jar</packaging>
-  <name>Sample classes used later in jproxygen build</name>
+  <name>Runtime API for jproxygen</name>
   <url>http://github.com/facetnated/JProxyGen</url>
-    <dependencies>
-        <dependency>
-	      <groupId>com.thoughtworks.jproxygen</groupId>
-	      <artifactId>jproxygen-api</artifactId>
-            <version>${pom.version}</version>
-        </dependency>
-    </dependencies>
 
 </project>
