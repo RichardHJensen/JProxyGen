@@ -1,114 +1,137 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-      <groupId>com.thoughtworks.jproxygen</groupId>
-      <artifactId>jproxygen-parent</artifactId>
-      <version>1.0-SNAPSHOT</version>        
-  </parent>
-  <artifactId>jproxygen-behaviors</artifactId>
-  <packaging>jar</packaging>
-  <name>BDD tests for jproxygen</name>
-  <url>http://github.com/facetnated/JProxyGen</url>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.thoughtworks.jproxygen</groupId>
+        <artifactId>jproxygen-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>jproxygen-behaviors</artifactId>
+    <packaging>jar</packaging>
+    <name>BDD tests for jproxygen</name>
+    <url>http://github.com/facetnated/JProxyGen</url>
+    <properties>
+        <batch>false</batch>
+        <ignore.failure.view>true</ignore.failure.view>
+        <skip.embeddables.stories>false</skip.embeddables.stories>
+        <include.embeddables>**/stories/*.java</include.embeddables>
+        <include.paths>**/*.story</include.paths>
+        <include.annotated.embedders>**/AnnotatedEmbedderUsing*.java</include.annotated.embedders>
+        <annotated.embedder.runner>org.jbehave.core.junit.AnnotatedEmbedderRunner</annotated.embedder.runner>
+        <jbehave.version>3.0.2</jbehave.version>
+    </properties>
+
     <dependencies>
-	    <dependency>
-	      <groupId>org.jbehave</groupId>
-	      <artifactId>jbehave-core</artifactId>
-	      <version>3.0.2</version>
-	    </dependency>
+        <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-core</artifactId>
+            <version>${jbehave.version}</version>
+        </dependency>
     </dependencies>
-  <build>
-    <resources>
-      <resource>
-        <directory>${basedir}/src/main/java</directory>
-        <filtering>false</filtering>
-      </resource>
-    </resources>
-    <pluginManagement>
-      <plugins>
 
-        <!-- Here we unpack the jbehave resources for reports -->
+    <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/test/java</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
 
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <executions>
-            <execution>
-              <id>unpack-report-resources</id>
-              <phase>generate-resources</phase>
-              <goals>
-                <goal>unpack</goal>
-              </goals>
-              <configuration>
-                <overWriteReleases>false</overWriteReleases>
-                <overWriteSnapshots>true</overWriteSnapshots>
-                <artifactItems>
-                  <artifactItem>
-                    <groupId>org.jbehave.site</groupId>
-                    <artifactId>jbehave-site-resources</artifactId>
-                    <version>3.0</version>
-                    <type>zip</type>
-                    <outputDirectory>${project.build.directory}/jbehave-reports/view</outputDirectory>
-                  </artifactItem>
-                  <artifactItem>
+                <!-- Here we unpack the jbehave resources for reports -->
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>unpack-report-resources</id>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>unpack</goal>
+                            </goals>
+                            <configuration>
+                                <overWriteReleases>false</overWriteReleases>
+                                <overWriteSnapshots>true</overWriteSnapshots>
+                                <artifactItems>
+                                    <artifactItem>
+                                        <groupId>org.jbehave.site</groupId>
+                                        <artifactId>jbehave-site-resources</artifactId>
+                                        <version>3.0</version>
+                                        <type>zip</type>
+                                        <outputDirectory>${project.build.directory}/jbehave-reports/view
+                                        </outputDirectory>
+                                    </artifactItem>
+                                    <artifactItem>
+                                        <groupId>org.jbehave</groupId>
+                                        <artifactId>jbehave-core</artifactId>
+                                        <version>${jbehave.version}</version>
+                                        <classifier>resources</classifier>
+                                        <type>zip</type>
+                                        <outputDirectory>${project.build.directory}/jbehave-reports/view
+                                        </outputDirectory>
+                                    </artifactItem>
+                                </artifactItems>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
                     <groupId>org.jbehave</groupId>
-                    <artifactId>jbehave-core</artifactId>
-                    <version>3.0.2</version>
-                    <classifier>resources</classifier>
-                    <type>zip</type>
-                    <outputDirectory>${project.build.directory}/jbehave-reports/view</outputDirectory>
-                  </artifactItem>
-                </artifactItems>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.jbehave</groupId>
-          <artifactId>jbehave-maven-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-      </plugin>
+                    <artifactId>jbehave-maven-plugin</artifactId>
+                    <version>${jbehave.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*Story.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
 
-      <!--
-        Here we define the executions of the jbehave-maven-plugin for
-        running stories as embeddables
-      -->
-      <!--
-        This configuration is used by all the examples which need only
-        specify the ${include.embeddables} property
-      -->
+            <!--
+              Here we define the executions of the jbehave-maven-plugin for
+              running stories as embeddables
+            -->
+            <!--
+              This configuration is used by all the examples which need only
+              specify the ${include.embeddables} property
+            -->
 
-      <plugin>
-        <groupId>org.jbehave</groupId>
-        <artifactId>jbehave-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>embeddable-stories</id>
-            <phase>integration-test</phase>
-            <configuration>
-              <includes>
-                <include>${include.embeddables}</include>
-              </includes>
-              <excludes />
-              <skip>${skip.embeddables.stories}</skip>
-              <batch>${batch}</batch>
-              <generateViewAfterStories>true</generateViewAfterStories>
-              <ignoreFailureInStories>true</ignoreFailureInStories>
-              <ignoreFailureInView>${ignore.failure.view}</ignoreFailureInView>
-            </configuration>
-            <goals>
-              <goal>run-stories-as-embeddables</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+            <plugin>
+                <groupId>org.jbehave</groupId>
+                <artifactId>jbehave-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>embeddable-stories</id>
+                        <phase>integration-test</phase>
+                        <configuration>
+                            <includes>
+                                <include>${include.embeddables}</include>
+                            </includes>
+                            <excludes/>
+                            <skip>${skip.embeddables.stories}</skip>
+                            <batch>${batch}</batch>
+                            <generateViewAfterStories>true</generateViewAfterStories>
+                            <ignoreFailureInStories>true</ignoreFailureInStories>
+                            <ignoreFailureInView>${ignore.failure.view}</ignoreFailureInView>
+                        </configuration>
+                        <goals>
+                            <goal>run-stories-as-embeddables</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
