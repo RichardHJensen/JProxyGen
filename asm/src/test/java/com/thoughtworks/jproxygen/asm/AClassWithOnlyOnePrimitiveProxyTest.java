@@ -1,7 +1,8 @@
 package com.thoughtworks.jproxygen.asm;
 
 import com.thoughtworks.jproxygen.api.JProxyCallback;
-import com.thoughtworks.jproxygen.sample.AClassWithOnlyOnePrimitiveCallbackProxy;
+import com.thoughtworks.jproxygen.api.NullObjectJProxyCallback;
+import com.thoughtworks.jproxygen.sample.AClassWithOnlyOnePrimitive;
 import org.junit.Test;
 
 import static com.thoughtworks.jproxygen.api.JProxyCallback.Behavior;
@@ -18,21 +19,21 @@ import static org.junit.Assert.assertTrue;
 public class AClassWithOnlyOnePrimitiveProxyTest {
     @Test
     public void shouldReturnSameValueWhenNoBehaviorOverridden() {
-        AClassWithOnlyOnePrimitiveCallbackProxy proxy = new AClassWithOnlyOnePrimitiveCallbackProxy(new NoOverrideCallback());
+        AClassWithOnlyOnePrimitive proxy = new AClassWithOnlyOnePrimitive.PROXY(new NoOverrideCallback());
         proxy.setIntValue(12);
         assertEquals(12, proxy.getIntValue());
     }
 
     @Test
     public void shouldReturnNegatedValueWhenSetBehaviorOverridden() {
-        AClassWithOnlyOnePrimitiveCallbackProxy proxy = new AClassWithOnlyOnePrimitiveCallbackProxy(new NegateOnSetCallback());
+        AClassWithOnlyOnePrimitive proxy = new AClassWithOnlyOnePrimitive.PROXY(new NegateOnSetCallback());
         proxy.setIntValue(12);
         assertEquals(-12, proxy.getIntValue());
     }
 
     @Test
     public void shouldReturnSameNegatedValueMultipleTimesWhenSetOverridden() {
-        AClassWithOnlyOnePrimitiveCallbackProxy proxy = new AClassWithOnlyOnePrimitiveCallbackProxy(new NegateOnSetCallback());
+        AClassWithOnlyOnePrimitive proxy = new AClassWithOnlyOnePrimitive.PROXY(new NegateOnSetCallback());
         proxy.setIntValue(12);
         assertEquals(-12, proxy.getIntValue());
         assertEquals(-12, proxy.getIntValue());
@@ -40,7 +41,7 @@ public class AClassWithOnlyOnePrimitiveProxyTest {
 
     @Test
     public void shouldDecrementValueWhenGetOverridden() {
-        AClassWithOnlyOnePrimitiveCallbackProxy proxy = new AClassWithOnlyOnePrimitiveCallbackProxy(new DecrementOnGetCallback());
+        AClassWithOnlyOnePrimitive proxy = new AClassWithOnlyOnePrimitive.PROXY(new DecrementOnGetCallback());
         proxy.setIntValue(12);
         assertEquals(12, proxy.getIntValue());
         assertEquals(11, proxy.getIntValue());
@@ -48,21 +49,21 @@ public class AClassWithOnlyOnePrimitiveProxyTest {
 
     @Test
     public void shouldReturnBaseValueWhenNullProxy() {
-        AClassWithOnlyOnePrimitiveCallbackProxy proxy = new AClassWithOnlyOnePrimitiveCallbackProxy(new NoBehaviorProxyCallback());
+        AClassWithOnlyOnePrimitive proxy = new AClassWithOnlyOnePrimitive.PROXY(new NullObjectJProxyCallback());
         proxy.setIntValue(12);
         assertEquals(0, proxy.getIntValue());
     }
 
     @Test
     public void shouldReturnBaseValueWhenNoValueSetForNullProxy() {
-        AClassWithOnlyOnePrimitiveCallbackProxy proxy = new AClassWithOnlyOnePrimitiveCallbackProxy(new NoBehaviorProxyCallback());
+        AClassWithOnlyOnePrimitive proxy = new AClassWithOnlyOnePrimitive.PROXY(new NullObjectJProxyCallback());
         assertEquals(0, proxy.getIntValue());
     }
 
     @Test
     public void shouldInstrumentSettingValueWithOutputStreamProxy() {
         OutputStreamProxyCallback outputStreamProxyCallback = new OutputStreamProxyCallback();
-        AClassWithOnlyOnePrimitiveCallbackProxy proxy = new AClassWithOnlyOnePrimitiveCallbackProxy(outputStreamProxyCallback);
+        AClassWithOnlyOnePrimitive proxy = new AClassWithOnlyOnePrimitive.PROXY(outputStreamProxyCallback);
         proxy.setIntValue(1);
         proxy.getIntValue();
         assertEquals("111", outputStreamProxyCallback.resultBuilder.toString());
@@ -88,7 +89,7 @@ public class AClassWithOnlyOnePrimitiveProxyTest {
     @Test
     public void shouldCallPostEvenWhenBypassingBehaviorInCallback() {
         MethodInvocationTraceCallback callback = new MethodInvocationTraceCallback();
-        AClassWithOnlyOnePrimitiveCallbackProxy proxy = new AClassWithOnlyOnePrimitiveCallbackProxy(callback);
+        AClassWithOnlyOnePrimitive proxy = new AClassWithOnlyOnePrimitive.PROXY(callback);
         proxy.setIntValue(13);
         assertTrue(callback.resultBuilder.indexOf("POST-setIntValue") >= 0);
     }

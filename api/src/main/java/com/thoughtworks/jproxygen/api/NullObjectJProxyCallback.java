@@ -1,6 +1,4 @@
-package com.thoughtworks.jproxygen.asm;
-
-import com.thoughtworks.jproxygen.api.JProxyCallback;
+package com.thoughtworks.jproxygen.api;
 
 /**
  * Created by IntelliJ IDEA.
@@ -9,7 +7,7 @@ import com.thoughtworks.jproxygen.api.JProxyCallback;
  * Time: 6:32:18 PM
  * To change this template use File | Settings | File Templates.
  */
-public class NoBehaviorProxyCallback implements JProxyCallback {
+public class NullObjectJProxyCallback implements JProxyCallback {
     public Object invoke(Object proxiedObject, Timing timing, String methodName, Object... methodArgs) {
         return JProxyCallback.Behavior.BYPASS;
     }
