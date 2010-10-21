@@ -1,25 +1,26 @@
 package com.thoughtworks.jproxygen.asm;
 
+import com.thoughtworks.jproxygen.api.DefaultBehaviorCallback;
 import com.thoughtworks.jproxygen.api.JProxyCallback;
 import com.thoughtworks.jproxygen.api.NullObjectJProxyCallback;
 import com.thoughtworks.jproxygen.sample.AClassWithOnlyOnePrimitive;
 import org.junit.Test;
 
 import static com.thoughtworks.jproxygen.api.JProxyCallback.Behavior;
+import static com.thoughtworks.jproxygen.api.JProxyCallback.Timing.POST;
+import static com.thoughtworks.jproxygen.api.JProxyCallback.Timing.PRE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-/**
- * Created by IntelliJ IDEA.
- * User: ThoughtWorks
- * Date: Sep 15, 2010
- * Time: 6:23:24 PM
- * To change this template use File | Settings | File Templates.
- */
 public class AClassWithOnlyOnePrimitiveProxyTest {
+
+    private JProxyCallback cb = mock(JProxyCallback.class);
+
     @Test
     public void shouldReturnSameValueWhenNoBehaviorOverridden() {
-        AClassWithOnlyOnePrimitive proxy = new AClassWithOnlyOnePrimitive.PROXY(new NoOverrideCallback());
+        AClassWithOnlyOnePrimitive proxy = new AClassWithOnlyOnePrimitive.PROXY(new DefaultBehaviorCallback());
         proxy.setIntValue(12);
         assertEquals(12, proxy.getIntValue());
     }
@@ -32,11 +33,25 @@ public class AClassWithOnlyOnePrimitiveProxyTest {
     }
 
     @Test
-    public void shouldReturnSameNegatedValueMultipleTimesWhenSetOverridden() {
-        AClassWithOnlyOnePrimitive proxy = new AClassWithOnlyOnePrimitive.PROXY(new NegateOnSetCallback());
+    public void shouldReturnSameOverriddenValueMultipleTimesWhenSetOverridden() {
+        AClassWithOnlyOnePrimitive.PROXY proxy = new AClassWithOnlyOnePrimitive.PROXY(cb);
+        replaceOriginalWithOverride(proxy, 12, -14);
         proxy.setIntValue(12);
-        assertEquals(-12, proxy.getIntValue());
-        assertEquals(-12, proxy.getIntValue());
+        assertEquals(-14, proxy.getIntValue());
+    }
+
+    private void replaceOriginalWithOverride(AClassWithOnlyOnePrimitive.PROXY proxy, final int orig, final int ovr) {
+        when(cb.invoke(proxy, PRE, "setIntValue", orig)).thenReturn(Behavior.DEFAULT);
+        when(cb.invoke(proxy, POST, "getIntValue", 0)).thenReturn(ovr);
+    }
+
+    @Test
+    public void shouldReturnSameOverriddenValueMultipleTimesWhenSetOverridden2() {
+        AClassWithOnlyOnePrimitive.PROXY proxy = new AClassWithOnlyOnePrimitive.PROXY(cb);
+        replaceOriginalWithOverride(proxy, 12, -14);
+        proxy.setIntValue(12);
+        assertEquals(-14, proxy.getIntValue());
+        assertEquals(-14, proxy.getIntValue());
     }
 
     @Test

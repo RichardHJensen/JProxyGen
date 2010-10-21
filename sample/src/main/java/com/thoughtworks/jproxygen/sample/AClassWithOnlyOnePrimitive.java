@@ -12,7 +12,7 @@ import com.thoughtworks.jproxygen.api.NullObjectJProxyCallback;
  */
 public class AClassWithOnlyOnePrimitive {
 
-    private int intValue;
+    protected int intValue;
 
     public int getIntValue() {
         return intValue;
@@ -40,7 +40,7 @@ public class AClassWithOnlyOnePrimitive {
                 value = super.getIntValue();
             }
             result = callback.invoke(this, JProxyCallback.Timing.POST, "getIntValue", value);
-            if (JProxyCallback.Behavior.DEFAULT != result && (JProxyCallback.Behavior.BYPASS != result)) {
+            if (JProxyCallback.Behavior.DEFAULT != result && JProxyCallback.Behavior.BYPASS != result) {
                 value = (Integer) result;
             }
             return (Integer) value;
