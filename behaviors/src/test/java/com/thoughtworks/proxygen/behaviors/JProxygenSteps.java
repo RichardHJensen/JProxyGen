@@ -14,7 +14,7 @@ public class JProxygenSteps {
     public void when() {
     }
 
-    @Then("it is the eqivalent of $methodBody")
+    @Then("it is the equivalent of $methodBody")
     public void then(String methodBody) {
     }
 
