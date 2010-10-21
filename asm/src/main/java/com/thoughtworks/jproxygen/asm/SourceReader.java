@@ -11,5 +11,5 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface SourceReader {
-    List<String> getMethodNames() throws IOException;
+    List<Meth> getMethods() throws IOException;
 }

@@ -25,7 +25,7 @@ public class SourceReaderObjectImpl implements SourceReader {
         this.classStream = classStream;
     }
 
-    public List<String> getMethodNames() throws IOException {
+    public List<Meth> getMethods() throws IOException {
         ClassReader classReader = new ClassReader(classStream);
         ClassNode classNode = new ClassNode();
         classReader.accept(classNode,0);
