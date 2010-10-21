@@ -1,6 +1,6 @@
 Given an interface method
   void hello()
 When a proxy class is generated
-Then it is the eqivalent of
+Then it is the equivalent of
   public void hello() {
   }
